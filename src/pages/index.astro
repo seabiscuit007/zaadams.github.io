@@ -68,10 +68,13 @@ const aerialVideos = [
 				<div class="hero-overlay"></div>
 			</div>
 			<div class="hero-content">
-				<h1>Zach Adams</h1>
-				<p class="tagline">Aerial & FPV Videography · Provo, UT</p>
-				<a href="#fpv" class="btn">View Work</a>
-			</div>
+	<h1>Zach Adams</h1>
+	<p class="tagline">Aerial & FPV Videography · Provo, UT</p>
+	<div class="hero-btns">
+		<a href="#fpv" class="btn">View Work</a>
+		<a href="#contact" class="btn">Get In Touch</a>
+	</div>
+</div>
 		</section>
 
 		<section class="fpv" id="fpv">
@@ -114,10 +117,10 @@ const aerialVideos = [
 		</section>
 
 		<section class="contact" id="contact">
-			<h2>Get In Touch</h2>
-			<p>Available for commercial and creative projects.</p>
-			<a href="mailto:zach@zaadams.com" class="btn">zach@zaadams.com</a>
-		</section>
+	<h2>Get In Touch</h2>
+	<p>Available for commercial and creative projects.</p>
+	<a href="mailto:zach@zaadams.com" class="btn">zach@zaadams.com</a>
+</section>
 
 		<div class="lightbox" id="lightbox">
 			<div class="lightbox-content">
@@ -321,13 +324,18 @@ const aerialVideos = [
 	}
 
 	.contact {
-		text-align: center;
-		padding: 6rem 2rem;
-		border-top: 1px solid #222;
-		position: relative;
-		z-index: 1;
-		background: #0a0a0a;
-	}
+	text-align: center;
+	padding: 6rem 2rem;
+	border-top: 1px solid #222;
+	position: relative;
+	z-index: 1;
+	background: #0a0a0a;
+}
+
+.contact p {
+	color: #888;
+	margin-bottom: 2rem;
+}
 
 	.contact p {
 		color: #888;
@@ -370,6 +378,17 @@ const aerialVideos = [
 		border: none;
 		display: none;
 	}
+
+	.hero-btns {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.hero-btns .btn {
+	margin-top: 0;
+}
 </style>
 
 <script>
