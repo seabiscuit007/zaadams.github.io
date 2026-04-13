@@ -50,7 +50,7 @@ const videos = [
 				{videos.map(video => (
 					<div class="video-card" data-url={video.url}>
 						<div class="video-thumb">
-							<img src={video.thumbnail} alt="FPV clip" />
+							<img src={`https://img.youtube.com/vi/${video.url.includes('youtu.be') ? video.url.split('youtu.be/')[1] : video.url.split('v=')[1]}/maxresdefault.jpg`} alt="FPV clip" />
 							<div class="play-btn">&#9654;</div>
 						</div>
 					</div>
