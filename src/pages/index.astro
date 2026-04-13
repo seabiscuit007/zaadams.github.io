@@ -338,7 +338,7 @@ const videos = [
 		document.querySelectorAll('.video-card').forEach(card => {
 			card.addEventListener('click', () => {
 				const url = card.dataset.url;
-				const videoId = url.split('v=')[1];
+				const videoId = url.includes('youtu.be') ? url.split('youtu.be/')[1] : url.split('v=')[1];
 				lightboxVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
 				lightboxVideo.style.display = 'block';
 				lightboxImg.style.display = 'none';
