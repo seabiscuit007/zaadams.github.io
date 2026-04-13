@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://zaadams.com',
+  site: 'https://seabiscuit007.github.io',
+  base: '/zaadams.github.io',
 });
