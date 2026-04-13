@@ -1,11 +1,295 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const photos = Array.from({ length: 28 }, (_, i) => ({
+	src: `/Portfolio${String(i + 1).padStart(5, '0')}.jpg`,
+	alt: `PortfolioPhoto0000 ${i + 1}`
+}));
+
+const videos = [
+	{ thumbnail: "/fpv-thumb-1.jpg", url: "YOUR_YOUTUBE_LINK_1" },
+	{ thumbnail: "/fpv-thumb-2.jpg", url: "YOUR_YOUTUBE_LINK_2" },
+	{ thumbnail: "/fpv-thumb-3.jpg", url: "YOUR_YOUTUBE_LINK_3" },
+	{ thumbnail: "/fpv-thumb-4.jpg", url: "YOUR_YOUTUBE_LINK_4" },
+	{ thumbnail: "/fpv-thumb-5.jpg", url: "YOUR_YOUTUBE_LINK_5" },
+	{ thumbnail: "/fpv-thumb-6.jpg", url: "YOUR_YOUTUBE_LINK_6" },
+	{ thumbnail: "/fpv-thumb-7.jpg", url: "YOUR_YOUTUBE_LINK_7" },
+	{ thumbnail: "/fpv-thumb-8.jpg", url: "YOUR_YOUTUBE_LINK_8" },
+	{ thumbnail: "/fpv-thumb-9.jpg", url: "YOUR_YOUTUBE_LINK_9" },
+	{ thumbnail: "/fpv-thumb-10.jpg", url: "YOUR_YOUTUBE_LINK_10" },
+	{ thumbnail: "/fpv-thumb-11.jpg", url: "YOUR_YOUTUBE_LINK_11" },
+	{ thumbnail: "/fpv-thumb-12.jpg", url: "YOUR_YOUTUBE_LINK_12" },
+	{ thumbnail: "/fpv-thumb-13.jpg", url: "YOUR_YOUTUBE_LINK_13" },
+	{ thumbnail: "/fpv-thumb-14.jpg", url: "YOUR_YOUTUBE_LINK_14" },
+	{ thumbnail: "/fpv-thumb-15.jpg", url: "YOUR_YOUTUBE_LINK_15" },
+];
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+
+		<section class="hero">
+			<h1>Zach Adams</h1>
+			<p class="tagline">Aerial & FPV Videography · Provo, UT</p>
+			<a href="#fpv" class="btn">View Work</a>
+		</section>
+
+		<section class="fpv" id="fpv">
+			<h2>FPV</h2>
+			<div class="video-grid">
+				{videos.map(video => (
+					<div class="video-card" data-url={video.url}>
+						<div class="video-thumb">
+							<img src={video.thumbnail} alt="FPV clip" />
+							<div class="play-btn">&#9654;</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="portfolio" id="portfolio">
+			<h2>Photography & Aerial</h2>
+			<div class="photo-grid">
+				{photos.map(photo => (
+					<div class="photo-card">
+						<img src={photo.src} alt={photo.alt} />
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="contact" id="contact">
+			<h2>Get In Touch</h2>
+			<p>Available for commercial and creative projects.</p>
+			<a href="mailto:zach@zaadams.com" class="btn">zach@zaadams.com</a>
+		</section>
+
+		<div class="lightbox" id="lightbox">
+			<div class="lightbox-content">
+				<img id="lightbox-img" src="" alt="" />
+				<iframe id="lightbox-video" src="" allowfullscreen></iframe>
+			</div>
+		</div>
+
+	</main>
 </Layout>
+
+<style>
+	main {
+		width: 100%;
+	}
+
+	.hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		text-align: center;
+		padding: 0 1rem;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		margin: 0;
+		letter-spacing: -1px;
+	}
+
+	.tagline {
+		font-size: 1.2rem;
+		color: #888;
+		margin-top: 0.75rem;
+	}
+
+	.btn {
+		margin-top: 2rem;
+		padding: 0.75rem 2rem;
+		border: 1px solid #ffffff;
+		color: #ffffff;
+		text-decoration: none;
+		font-size: 0.95rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		transition: background 0.2s, color 0.2s;
+	}
+
+	.btn:hover {
+		background: #ffffff;
+		color: #0a0a0a;
+	}
+
+	.fpv, .portfolio {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem;
+	}
+
+	.portfolio {
+		border-top: 1px solid #222;
+	}
+
+	h2 {
+		font-size: 1rem;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		color: #888;
+		margin-bottom: 3rem;
+	}
+
+	.video-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.video-card {
+		cursor: pointer;
+	}
+
+	.video-thumb {
+		position: relative;
+		aspect-ratio: 16/9;
+		overflow: hidden;
+	}
+
+	.video-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+
+	.video-card:hover img {
+		transform: scale(1.05);
+	}
+
+	.play-btn {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 56px;
+		height: 56px;
+		background: rgba(255,255,255,0.15);
+		backdrop-filter: blur(4px);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2rem;
+		color: white;
+		transition: background 0.2s;
+	}
+
+	.video-card:hover .play-btn {
+		background: rgba(255,255,255,0.3);
+	}
+
+	.photo-grid {
+		columns: 3;
+		column-gap: 1rem;
+	}
+
+	.photo-card {
+		break-inside: avoid;
+		margin-bottom: 1rem;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.photo-card img {
+		width: 100%;
+		display: block;
+		transition: transform 0.4s ease;
+	}
+
+	.photo-card:hover img {
+		transform: scale(1.03);
+	}
+
+	.contact {
+		text-align: center;
+		padding: 6rem 2rem;
+		border-top: 1px solid #222;
+	}
+
+	.contact p {
+		color: #888;
+		margin-bottom: 0;
+	}
+
+	.lightbox {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.95);
+		z-index: 1000;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+	}
+
+	.lightbox.active {
+		display: flex;
+	}
+
+	.lightbox-content {
+		max-width: 90vw;
+		max-height: 90vh;
+	}
+
+	#lightbox-img {
+		max-width: 90vw;
+		max-height: 90vh;
+		display: none;
+	}
+
+	#lightbox-video {
+		width: 90vw;
+		max-width: 1200px;
+		aspect-ratio: 16/9;
+		border: none;
+		display: none;
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+		const lightboxVideo = document.getElementById('lightbox-video');
+
+		document.querySelectorAll('.photo-card').forEach(card => {
+			card.addEventListener('click', () => {
+				const src = card.querySelector('img').src;
+				lightboxImg.src = src;
+				lightboxImg.style.display = 'block';
+				lightboxVideo.style.display = 'none';
+				lightboxVideo.src = '';
+				lightbox.classList.add('active');
+			});
+		});
+
+		document.querySelectorAll('.video-card').forEach(card => {
+			card.addEventListener('click', () => {
+				const url = card.dataset.url;
+				const videoId = url.split('v=')[1];
+				lightboxVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+				lightboxVideo.style.display = 'block';
+				lightboxImg.style.display = 'none';
+				lightboxImg.src = '';
+				lightbox.classList.add('active');
+			});
+		});
+
+		lightbox.addEventListener('click', () => {
+			lightboxVideo.src = '';
+			lightbox.classList.remove('active');
+		});
+	});
+</script>
