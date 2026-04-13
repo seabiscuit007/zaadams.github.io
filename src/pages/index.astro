@@ -1,10 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const photos = Array.from({ length: 28 }, (_, i) => ({
-	src: `/Portfolio${String(i + 1).padStart(5, '0')}.jpg`,
-	alt: `Portfolio photo ${i + 1}`
-}));
+const photos = [
+	{ src: "/Portfolio00007.jpg", alt: "Portfolio photo 7" },
+	{ src: "/Portfolio00015.jpg", alt: "Portfolio photo 15" },
+	{ src: "/Portfolio00003.jpg", alt: "Portfolio photo 3" },
+	{ src: "/Portfolio00021.jpg", alt: "Portfolio photo 21" },
+	{ src: "/Portfolio00010.jpg", alt: "Portfolio photo 10" },
+	{ src: "/Portfolio00025.jpg", alt: "Portfolio photo 25" },
+	{ src: "/Portfolio00001.jpg", alt: "Portfolio photo 1" },
+	{ src: "/Portfolio00018.jpg", alt: "Portfolio photo 18" },
+	{ src: "/Portfolio00013.jpg", alt: "Portfolio photo 13" },
+	{ src: "/Portfolio00006.jpg", alt: "Portfolio photo 6" },
+	{ src: "/Portfolio00028.jpg", alt: "Portfolio photo 28" },
+	{ src: "/Portfolio00020.jpg", alt: "Portfolio photo 20" },
+	{ src: "/Portfolio00004.jpg", alt: "Portfolio photo 4" },
+	{ src: "/Portfolio00016.jpg", alt: "Portfolio photo 16" },
+	{ src: "/Portfolio00009.jpg", alt: "Portfolio photo 9" },
+	{ src: "/Portfolio00023.jpg", alt: "Portfolio photo 23" },
+	{ src: "/Portfolio00011.jpg", alt: "Portfolio photo 11" },
+	{ src: "/Portfolio00026.jpg", alt: "Portfolio photo 26" },
+	{ src: "/Portfolio00002.jpg", alt: "Portfolio photo 2" },
+	{ src: "/Portfolio00019.jpg", alt: "Portfolio photo 19" },
+	{ src: "/Portfolio00014.jpg", alt: "Portfolio photo 14" },
+	{ src: "/Portfolio00008.jpg", alt: "Portfolio photo 8" },
+	{ src: "/Portfolio00027.jpg", alt: "Portfolio photo 27" },
+	{ src: "/Portfolio00017.jpg", alt: "Portfolio photo 17" },
+	{ src: "/Portfolio00005.jpg", alt: "Portfolio photo 5" },
+	{ src: "/Portfolio00022.jpg", alt: "Portfolio photo 22" },
+	{ src: "/Portfolio00024.jpg", alt: "Portfolio photo 24" },
+	{ src: "/Portfolio00012.jpg", alt: "Portfolio photo 12" },
+];
 
 const videos = [
 	{ thumbnail: "/fpv-thumb-1.jpg", url: "https://youtu.be/4AeC1PfFEOk" },
