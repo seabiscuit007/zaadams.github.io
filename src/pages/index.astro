@@ -33,16 +33,16 @@ const photos = [
 ];
 
 const videos = [
-	{ thumbnail: "/fpv-thumb-1.jpg", url: "https://youtu.be/4AeC1PfFEOk" },
-	{ thumbnail: "/fpv-thumb-2.jpg", url: "https://youtu.be/zEch6-N2R1w" },
-	{ thumbnail: "/fpv-thumb-3.jpg", url: "https://youtu.be/HjsRMvdApB8" },
-	{ thumbnail: "/fpv-thumb-4.jpg", url: "https://youtu.be/4b4mly0tHQU" },
-	{ thumbnail: "/fpv-thumb-5.jpg", url: "https://youtu.be/9rjauuSO_ZQ" },
-	{ thumbnail: "/fpv-thumb-6.jpg", url: "https://youtu.be/aAH-jcWaoG4" },
-	{ thumbnail: "/fpv-thumb-7.jpg", url: "https://youtu.be/GlUAXS6TA7o" },
-	{ thumbnail: "/fpv-thumb-8.jpg", url: "https://youtu.be/T-c3c-70NQ4" },
-
+	{ url: "https://youtu.be/4AeC1PfFEOk" },
+	{ url: "https://youtu.be/zEch6-N2R1w" },
+	{ url: "https://youtu.be/HjsRMvdApB8" },
+	{ url: "https://youtu.be/4b4mly0tHQU" },
+	{ url: "https://youtu.be/9rjauuSO_ZQ" },
+	{ url: "https://youtu.be/aAH-jcWaoG4" },
+	{ url: "https://youtu.be/GlUAXS6TA7o" },
+	{ url: "https://youtu.be/T-c3c-70NQ4" },
 ];
+
 const aerialVideos = [
 	{ url: "https://youtu.be/-92Noiuu9zs" },
 	{ url: "https://youtu.be/K2yuxxNwCCE" },
@@ -68,13 +68,13 @@ const aerialVideos = [
 				<div class="hero-overlay"></div>
 			</div>
 			<div class="hero-content">
-	<h1>Zach Adams</h1>
-	<p class="tagline">Aerial & FPV Videography · Provo, UT</p>
-	<div class="hero-btns">
-		<a href="#fpv" class="btn">View Work</a>
-		<a href="#contact" class="btn">Get In Touch</a>
-	</div>
-</div>
+				<h1>Zach Adams</h1>
+				<p class="tagline">Aerial & FPV Videography · Provo, UT</p>
+				<div class="hero-btns">
+					<a href="#fpv" class="btn">View Work</a>
+					<a href="#contact" class="btn">Get In Touch</a>
+				</div>
+			</div>
 		</section>
 
 		<section class="fpv" id="fpv">
@@ -83,7 +83,7 @@ const aerialVideos = [
 				{videos.map(video => (
 					<div class="video-card" data-url={video.url}>
 						<div class="video-thumb">
-							<img src={`https://img.youtube.com/vi/${video.url.includes('youtu.be') ? video.url.split('youtu.be/')[1] : video.url.split('v=')[1]}/maxresdefault.jpg`} alt="FPV clip" />
+							<img src={`https://img.youtube.com/vi/${video.url.split('youtu.be/')[1]}/maxresdefault.jpg`} alt="FPV clip" />
 							<div class="play-btn">&#9654;</div>
 						</div>
 					</div>
@@ -92,21 +92,21 @@ const aerialVideos = [
 		</section>
 
 		<section class="aerial-video" id="aerial-video">
-	<h2>Aerial</h2>
-	<div class="video-grid">
-		{aerialVideos.map(video => (
-			<div class="video-card" data-url={video.url}>
-				<div class="video-thumb">
-					<img src={`https://img.youtube.com/vi/${video.url.split('youtu.be/')[1]}/maxresdefault.jpg`} alt="Aerial clip" />
-					<div class="play-btn">&#9654;</div>
-				</div>
+			<h2>Aerial</h2>
+			<div class="video-grid">
+				{aerialVideos.map(video => (
+					<div class="video-card" data-url={video.url}>
+						<div class="video-thumb">
+							<img src={`https://img.youtube.com/vi/${video.url.split('youtu.be/')[1]}/maxresdefault.jpg`} alt="Aerial clip" />
+							<div class="play-btn">&#9654;</div>
+						</div>
+					</div>
+				))}
 			</div>
-		))}
-	</div>
-</section>
+		</section>
 
 		<section class="portfolio" id="portfolio">
-			<h2>Photography & Aerial</h2>
+			<h2>Photography</h2>
 			<div class="photo-grid">
 				{photos.map(photo => (
 					<div class="photo-card">
@@ -117,10 +117,10 @@ const aerialVideos = [
 		</section>
 
 		<section class="contact" id="contact">
-	<h2>Get In Touch</h2>
-	<p>Available for commercial and creative projects.</p>
-	<a href="mailto:zach@zaadams.com" class="btn">zach@zaadams.com</a>
-</section>
+			<h2>Get In Touch</h2>
+			<p>Available for commercial and creative projects.</p>
+			<a href="mailto:zach@zaadams.com" class="btn">zach@zaadams.com</a>
+		</section>
 
 		<div class="lightbox" id="lightbox">
 			<div class="lightbox-content">
@@ -198,8 +198,14 @@ const aerialVideos = [
 		margin-top: 0.75rem;
 	}
 
-	.btn {
+	.hero-btns {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
 		margin-top: 2rem;
+	}
+
+	.btn {
 		padding: 0.75rem 2rem;
 		border: 1px solid #ffffff;
 		color: #ffffff;
@@ -225,14 +231,14 @@ const aerialVideos = [
 	}
 
 	.aerial-video {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 6rem 2rem;
-	position: relative;
-	z-index: 1;
-	background: #0a0a0a;
-	border-top: 1px solid #222;
-}
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 6rem 2rem;
+		position: relative;
+		z-index: 1;
+		background: #0a0a0a;
+		border-top: 1px solid #222;
+	}
 
 	.portfolio {
 		max-width: 1200px;
@@ -324,22 +330,17 @@ const aerialVideos = [
 	}
 
 	.contact {
-	text-align: center;
-	padding: 6rem 2rem;
-	border-top: 1px solid #222;
-	position: relative;
-	z-index: 1;
-	background: #0a0a0a;
-}
-
-.contact p {
-	color: #888;
-	margin-bottom: 2rem;
-}
+		text-align: center;
+		padding: 6rem 2rem;
+		border-top: 1px solid #222;
+		position: relative;
+		z-index: 1;
+		background: #0a0a0a;
+	}
 
 	.contact p {
 		color: #888;
-		margin-bottom: 0;
+		margin-bottom: 2rem;
 	}
 
 	.lightbox {
@@ -378,17 +379,6 @@ const aerialVideos = [
 		border: none;
 		display: none;
 	}
-
-	.hero-btns {
-	display: flex;
-	gap: 1rem;
-	justify-content: center;
-	margin-top: 2rem;
-}
-
-.hero-btns .btn {
-	margin-top: 0;
-}
 </style>
 
 <script>
